@@ -35,7 +35,6 @@ kotlin {
         }
         commonMain.dependencies {
 
-            implementation (libs.play.services.auth)
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -49,11 +48,11 @@ kotlin {
 }
 
 android {
-    namespace = "org.example.project"
+        namespace = "com.saiapp.sparkit"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.example.project"
+        applicationId = "com.saiapp.sparkit"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
