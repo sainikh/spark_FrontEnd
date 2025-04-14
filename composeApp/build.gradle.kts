@@ -32,7 +32,9 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
+            implementation(libs.androidx.credentials.play.services.auth)
+            implementation(libs.androidx.credentials)
+            implementation(libs.auth.api.impl)
         }
         commonMain.dependencies {
 
@@ -78,6 +80,7 @@ android {
 dependencies {
     implementation(libs.androidx.ui.android)
     implementation(libs.androidx.ui.graphics.android)
+    implementation(libs.googleid)
     debugImplementation(compose.uiTooling)
 }
 

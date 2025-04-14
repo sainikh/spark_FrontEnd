@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.signin"
+            android:value="your_client_id.apps.googleusercontent.com" />
     </application>
 
 </manifest>
