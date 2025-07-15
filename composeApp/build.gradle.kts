@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -32,10 +33,14 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.credentials.play.services.auth)
+            implementation(libs.androidx.credentials)
+            implementation(libs.auth.api.impl)
+            implementation(libs.ktor.client.android)
+            implementation("com.russhwolf:multiplatform-settings-datastore:1.1.1")
         }
         commonMain.dependencies {
 
-            implementation (libs.play.services.auth)
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -44,16 +49,24 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.ktor.client.core)
+            implementation (libs.ktor.client.logging.native)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation("io.ktor:ktor-client-logging:3.1.3")
+
+            //Preferences
+            implementation("com.russhwolf:multiplatform-settings:1.1.1")
         }
     }
 }
 
 android {
-    namespace = "org.example.project"
+        namespace = "com.saiapp.sparkit"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.example.project"
+        applicationId = "com.saiapp.sparkit"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -78,6 +91,7 @@ android {
 dependencies {
     implementation(libs.androidx.ui.android)
     implementation(libs.androidx.ui.graphics.android)
+    implementation(libs.googleid)
     debugImplementation(compose.uiTooling)
 }
 
