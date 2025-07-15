@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -35,6 +36,8 @@ kotlin {
             implementation(libs.androidx.credentials.play.services.auth)
             implementation(libs.androidx.credentials)
             implementation(libs.auth.api.impl)
+            implementation(libs.ktor.client.android)
+            implementation("com.russhwolf:multiplatform-settings-datastore:1.1.1")
         }
         commonMain.dependencies {
 
@@ -46,6 +49,14 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.ktor.client.core)
+            implementation (libs.ktor.client.logging.native)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation("io.ktor:ktor-client-logging:3.1.3")
+
+            //Preferences
+            implementation("com.russhwolf:multiplatform-settings:1.1.1")
         }
     }
 }
