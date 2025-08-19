@@ -19,14 +19,13 @@ private const val TAG: String = "GoogleAuth"
 
 object GoogleAuth {
     suspend fun launchSignIn(
-        context: Context,
+        context: Any?,
         serverClientId: String,
         loginViewModel: LoginViewModel,
         coroutineScope: CoroutineScope,
     ) {
         try {
-
-            val credentialManager = CredentialManager.create(context)
+            val credentialManager = CredentialManager.create(context as Context)
             val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
                 .setFilterByAuthorizedAccounts(false)
                 .setServerClientId(serverClientId = serverClientId)

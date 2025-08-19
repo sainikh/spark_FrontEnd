@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.saiapp.sparkit.ktorClient.Login.LoginResponse
 import com.saiapp.sparkit.Preference.AppPreferences
 import com.saiapp.sparkit.Preference.PreferenceKeys
-import com.saiapp.sparkit.logger.KMMLogger
+//import com.saiapp.sparkit.logger.KMMLogger
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -25,7 +25,7 @@ class LoginViewModel(private val ktorClient: KtorClient) : ViewModel() {
             handleOnSuccess(response)
         }.onFailure { error ->
             _errorMessage.value = "Something went wrong"
-            KMMLogger.log(TAG, "Login Response Error :${error.message}")
+//            KMMLogger.log(TAG, "Login Response Error :${error.message}")
             error.printStackTrace()
         }
     }

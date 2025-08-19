@@ -1,4 +1,6 @@
 package com.saiapp.sparkit
+import com.saiapp.sparkit.ktorClient.LoginViewModel
+import kotlinx.coroutines.CoroutineScope
 import platform.UIKit.UIDevice
 
 class IOSPlatform: Platform {
@@ -6,3 +8,9 @@ class IOSPlatform: Platform {
 }
 
 actual fun getPlatform(): Platform = IOSPlatform()
+actual suspend fun signInWithGoogle(
+    serverClientId: String,
+    loginViewModel: LoginViewModel,
+    coroutineScope: CoroutineScope
+) {
+}

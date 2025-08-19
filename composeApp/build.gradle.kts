@@ -11,7 +11,6 @@ plugins {
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -62,7 +61,7 @@ kotlin {
 }
 
 android {
-        namespace = "com.saiapp.sparkit"
+    namespace = "com.saiapp.sparkit"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -79,12 +78,15 @@ android {
     }
     buildTypes {
         getByName("release") {
+            isMinifyEnabled = true
+        }
+        getByName("debug"){
             isMinifyEnabled = false
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }
 
