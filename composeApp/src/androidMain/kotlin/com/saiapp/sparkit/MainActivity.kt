@@ -11,9 +11,12 @@ private val TAG: String = MainActivity::class.java.simpleName
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Set Context
+        SharedModule.setAndroidContext(this)
         enableEdgeToEdge()
         setContent {
-            LoginScreen()
+            App()
         }
     }
 }

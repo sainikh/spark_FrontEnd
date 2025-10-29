@@ -6,7 +6,6 @@ import com.russhwolf.settings.SharedPreferencesSettings
 
 
 private lateinit var androidSettings: Settings
-private lateinit var context: Context
 
 fun initAndroidPreferences(context: Context) {
     if (!::androidSettings.isInitialized) {
