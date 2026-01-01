@@ -15,7 +15,10 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,6 +38,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import sparkit.composeapp.generated.resources.Res
 import sparkit.composeapp.generated.resources.google_icon
 import sparkit.composeapp.generated.resources.kurale_regular
@@ -45,13 +49,18 @@ import sparkit.composeapp.generated.resources.server_client_id
 private const val TAG: String = "LoginScreen"
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(homeScreenNav: () -> Unit) {
     val loginViewModel = LoginViewModel(KtorClient())
     val coroutineScope = rememberCoroutineScope()
-//    val context = LocalContext.current
     val serverClientId = stringResource(Res.string.server_client_id)
-    val showNextScreen = loginViewModel.navigateToNextPage.collectAsState()
 
+    LaunchedEffect(Unit) {
+        loginViewModel.navigateToNextPage.collect { it ->
+            it.takeIf { it }?.let {
+                homeScreenNav()
+            }
+        }
+    }
 
 
     Column(

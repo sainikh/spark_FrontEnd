@@ -12,3 +12,7 @@ This is a Kotlin Multiplatform project targeting Android, iOS.
 
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+go through the link below for all kmp implementation
+
+https://github.com/terrakok/kmp-awesome#-architecture

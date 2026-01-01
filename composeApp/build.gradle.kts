@@ -53,9 +53,10 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.content.negotiation)
             implementation("io.ktor:ktor-client-logging:3.1.3")
-
             //Preferences
             implementation("com.russhwolf:multiplatform-settings:1.1.1")
+            //Navigation
+            implementation(libs.navigation.compose)
         }
     }
 }

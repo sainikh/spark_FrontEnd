@@ -11,7 +11,7 @@ import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.saiapp.sparkit.ktorClient.LoginViewModel
-import com.saiapp.sparkit.view.handleFailure
+import com.saiapp.sparkit.view.Login.handleFailure
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

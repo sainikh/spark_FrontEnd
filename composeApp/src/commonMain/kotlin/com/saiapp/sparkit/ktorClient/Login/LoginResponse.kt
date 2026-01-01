@@ -10,6 +10,6 @@ data class LoginResponse(
 
 @Serializable
 data class Token(
-    val acessToken: String,
-    val refresh_token: String
+    val accessToken: String,
+    val refreshToken: String
 )

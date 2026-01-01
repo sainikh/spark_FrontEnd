@@ -1,4 +1,4 @@
-package com.saiapp.sparkit.view
+package com.saiapp.sparkit.view.Login
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -48,7 +48,7 @@ fun LoginScreen() {
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
     val serverClientId = stringResource(R.string.server_client_id)
-    val showNextScreen = loginViewModel.navigateToNextPage.collectAsState()
+//    val showNextScreen = loginViewModel.navigateToNextPage.collectAsState()
 
 
     Column(

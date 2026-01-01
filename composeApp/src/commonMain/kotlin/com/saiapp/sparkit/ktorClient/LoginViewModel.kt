@@ -1,19 +1,23 @@
 package com.saiapp.sparkit.ktorClient
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.saiapp.sparkit.ktorClient.Login.LoginResponse
 import com.saiapp.sparkit.Preference.AppPreferences
 import com.saiapp.sparkit.Preference.PreferenceKeys
+import kotlinx.coroutines.flow.MutableSharedFlow
 //import com.saiapp.sparkit.logger.KMMLogger
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 
 val TAG: String = "LoginViewModel"
 
 class LoginViewModel(private val ktorClient: KtorClient) : ViewModel() {
 
-    private val _navigateToNextPage: MutableStateFlow<Boolean?> = MutableStateFlow(null)
-    val navigateToNextPage: StateFlow<Boolean?> = _navigateToNextPage
+    private val _navigateToNextPage: MutableSharedFlow<Boolean> = MutableStateFlow(false)
+    val navigateToNextPage = _navigateToNextPage.asSharedFlow()
 
     private val _errorMessage: MutableStateFlow<String?> = MutableStateFlow(null)
     val errorMessage: StateFlow<String?> = _errorMessage
@@ -31,8 +35,10 @@ class LoginViewModel(private val ktorClient: KtorClient) : ViewModel() {
     }
 
     private fun handleOnSuccess(response: LoginResponse) {
-        AppPreferences.putString(PreferenceKeys.ACCESS_TOKEN, response.token.acessToken)
-        AppPreferences.putString(PreferenceKeys.REFRESH_TOKEN, response.token.refresh_token)
-        _navigateToNextPage.value = true
+        viewModelScope.launch {
+            AppPreferences.putString(PreferenceKeys.ACCESS_TOKEN, response.token.accessToken)
+            AppPreferences.putString(PreferenceKeys.REFRESH_TOKEN, response.token.refreshToken)
+            _navigateToNextPage.emit(true)
+        }
     }
 }

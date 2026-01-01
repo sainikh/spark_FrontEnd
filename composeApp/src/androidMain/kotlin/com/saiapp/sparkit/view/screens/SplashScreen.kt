@@ -1,4 +1,4 @@
-package com.saiapp.sparkit.view
+package com.saiapp.sparkit.view.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize   
