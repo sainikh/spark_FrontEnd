@@ -37,12 +37,13 @@ object GoogleAuth {
                 .addCredentialOption(googleIdOption)
                 .build()
 
+
             val result = credentialManager.getCredential(
                 request = request,
                 context = context,
             )
             handleSignIn(result, loginViewModel, coroutineScope)
-        } catch (e: GetCredentialException) {
+        } catch (e: Exception) {
             handleFailure(e)
         }
     }

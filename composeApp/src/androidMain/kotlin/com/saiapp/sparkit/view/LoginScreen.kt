@@ -136,7 +136,7 @@ fun LoginScreen() {
     }
 }
 
-fun handleFailure(e: GetCredentialException) {
+fun handleFailure(e: Exception) {
     Log.e(TAG, "GetCredentialException : $e")
 }
 
